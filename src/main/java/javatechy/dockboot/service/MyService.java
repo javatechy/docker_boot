@@ -25,7 +25,7 @@ public class MyService {
 	}
 
 	private void print(String key) {
-		logger.info("----------------------------" + key + "---------------------------");
+		logger.debug("--------" + key + "---------------------------");
 		logger.info(environment.getProperty(key));
 	}
 
