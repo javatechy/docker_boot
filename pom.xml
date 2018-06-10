@@ -4,17 +4,11 @@
 
 	<groupId>javatechy</groupId>
 	<artifactId>dockboot</artifactId>
-	<version>1.1-SNAPSHOT</version>
+	<version>1.1</version>
 	<packaging>jar</packaging>
 
 	<name>dockboot</name>
 	<description>Demo project for Dockerized Spring boot</description>
-
-	<scm>
-		<connection>scm:git:https://github.com/javatechy/docker_boot.git</connection>
-		<developerConnection>scm:git:https://github.com/javatechy/docker_boot.git</developerConnection>
-		<tag>HEAD</tag>
-	</scm>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -49,11 +43,6 @@
 
 	<build>
 		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-release-plugin</artifactId>
-				<version>2.5.3</version>
-			</plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
