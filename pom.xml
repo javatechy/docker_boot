@@ -4,7 +4,7 @@
 
 	<groupId>javatechy</groupId>
 	<artifactId>dockboot</artifactId>
-	<version>1.0</version>
+	<version>1.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>dockboot</name>
@@ -13,7 +13,7 @@
 	<scm>
 		<connection>scm:git:https://github.com/javatechy/docker_boot.git</connection>
 		<developerConnection>scm:git:https://github.com/javatechy/docker_boot.git</developerConnection>
-		<tag>dockboot-1.0</tag>
+		<tag>HEAD</tag>
 	</scm>
 
 	<parent>
