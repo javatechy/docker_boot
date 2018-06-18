@@ -11,9 +11,20 @@ docker pull javatechy/dockboot
  * Copy Dockerfile and wrapper.sh from `src/main/docker` into your project's `src/main/docker`
  * Add this repository path in your pom properties(in your project or in your pom).
  
+ If you are using Amazon ECR add your registry like this:
+ 
  ```
  	<docker.registry>XXXXXXXX.dkr.ecr.ap-south-1.amazonaws.com</docker.registry>
  ```
+ 
+ If you want to push the image in your public docker hub account add your username like this
+ 
+ ```
+ 	<docker.registry>javatechy</docker.registry>
+ ```
+ 
+ 
+ 
  * Add this plugin in plugins section of your pom.xml
  
  ```
@@ -69,7 +80,7 @@ docker pull javatechy/dockboot
 			</plugin>
  ```
 
-Note:  replace `dockboot` in images->image->name with your application name.
+Note:  replace `dockboot` in above code inside images->image->name with your application name.
 
 
 ### Run this image:
