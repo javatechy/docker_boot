@@ -1,14 +1,19 @@
 # Docker and Spring boot seed project
 
+###Assumptions:
+
+* You have basic knowledge of spring profiling.
+
 ### To pull this docker image use  
 
 ```
 docker pull javatechy/dockboot
 ```
-## Dockerizing your spring boot application
+
+### Dockerizing your spring boot application
 
  * To Dockerize a spring boot application create a folder `docker` inside `src/main/` 
- * Copy Dockerfile and wrapper.sh from `src/main/docker` into your project's `src/main/docker`
+ * Copy `Dockerfile` and `wrapper.sh` from `src/main/docker` into your project's `src/main/docker`
  * Add this repository path in your pom properties(in your project or in your pom).
  
  If you are using Amazon ECR add your registry like this:
