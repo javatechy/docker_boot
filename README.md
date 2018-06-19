@@ -107,14 +107,6 @@ mvn clean install
 mvn clean install -Ddocker.skip
 ```
 
-##### to push image through mvn
-
-Go inside your project directory. (If using mutlimodule project go inside your working project directory or sub project) and execute this command
-
-```
-mvn docker:push
-```
-
 ## Push An Image to ECR:
 
 * Configure your aws cli using this command `aws configure` and add your credentials and region.
