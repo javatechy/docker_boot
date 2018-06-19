@@ -1,12 +1,14 @@
 # Docker and Spring boot seed project
 
-###Assumptions:
 
-* You have basic knowledge of spring profiling.
-* Docker is installed on your system.
-* for ECS: aws cli is installed on your system.
-* If your are using ECS, a repository is already created with you project name.
+##Assumptions:
 
+1.  You have basic knowledge of spring profiling.
+2.  Docker is installed on your system.
+3.  for Amazon's ECS: 
+    1. aws cli is installed on your system
+    2. You have amazon secret key and access key with you, if generate your credentials.
+    3. you have ECR access for your user.
 
 ### To pull this docker image use  
 
@@ -17,8 +19,8 @@ docker pull javatechy/dockboot
 ### Dockerizing your spring boot application
 
  * To Dockerize a spring boot application create a folder `docker` inside `src/main/` 
- * Copy `Dockerfile` and `wrapper.sh` from `src/main/docker` into your project's `src/main/docker`
- * Add this repository path in your pom properties(in your project or in your pom).
+ * Copy `Dockerfile` and `wrapper.sh` from `src/main/docker` of this project into your project's `src/main/docker`
+ * Add this repository path in your pom properties(in your project or in your pom/ if your are using parent pom add it there).
 
  If you are using Amazon ECR add your registry like this:
  
@@ -121,6 +123,7 @@ mvn docker:push
 ```
 aws ecr get-login --no-include-email --region ap-south-1
 ```
+* If your project's repository is not created yet execute this command `aws ecr create-repository --repository-name PROJECT_NAME`
 * Copy the above command output and run it.
 * check your image after `mvn clean install` using `docker images`
 * Copy your repository name  and run this command `docker push REPOSITRY_NAME` for ex. `docker push XXXXX.dkr.ecr.ap-south-1.amazonaws.com/my_application_name`
