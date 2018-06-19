@@ -126,8 +126,12 @@ aws ecr get-login --no-include-email --region ap-south-1
 * If your project's repository is not created yet execute this command `aws ecr create-repository --repository-name PROJECT_NAME`
 * Copy the above command output and run it.
 * check your image after `mvn clean install` using `docker images`
-* Copy your repository name  and run this command `docker push REPOSITRY_NAME` for ex. `docker push XXXXX.dkr.ecr.ap-south-1.amazonaws.com/my_application_name`
 
+* To Push an image ,Go inside your project directory. (If using mutlimodule project go inside your working project directory or sub project) and execute this command
+
+```
+mvn docker:push
+```
 
 ### Run this image:
 
