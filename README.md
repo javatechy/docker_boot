@@ -3,6 +3,10 @@
 ###Assumptions:
 
 * You have basic knowledge of spring profiling.
+* Docker is installed on your system.
+* for ECS: aws cli is installed on your system.
+* If your are using ECS, a repository is already created with you project name.
+
 
 ### To pull this docker image use  
 
@@ -15,7 +19,7 @@ docker pull javatechy/dockboot
  * To Dockerize a spring boot application create a folder `docker` inside `src/main/` 
  * Copy `Dockerfile` and `wrapper.sh` from `src/main/docker` into your project's `src/main/docker`
  * Add this repository path in your pom properties(in your project or in your pom).
- 
+
  If you are using Amazon ECR add your registry like this:
  
  ```
@@ -27,7 +31,6 @@ docker pull javatechy/dockboot
  ```
  	<docker.registry>javatechy</docker.registry>
  ```
- 
  
  
  * Add this plugin in plugins section of your pom.xml
@@ -88,10 +91,34 @@ docker pull javatechy/dockboot
 Note:  replace `dockboot` in above code inside images->image->name with your application name.
 
 
+## Build your docker image:
+
+```
+mvn clean install
+```
+
+to Skip docker build
+
+```
+mvn clean install -Ddocker.skip
+```
+
+## Push An Image to ECR:
+
+* Configure your aws cli using this command `aws configure` and add your credentials and region.
+* get Login credentials from ECS by using this
+
+```
+aws ecr get-login --no-include-email --region ap-south-1
+```
+* Copy the above command output and run it.
+* check your image after `mvn clean install` using `docker images`
+
+
 ### Run this image:
 
 Assuming your logs directory /var/log/casa
-and your spring boot active profile is DEV
+and your spring boot active profile is DEV provided by `ENV_NAME`
 
 ```
 docker run -it -v /var/log/casa:/var/log/casa -p 9000:8000 -e ENV_NAME=dev javatechy/dockboot:1.0
