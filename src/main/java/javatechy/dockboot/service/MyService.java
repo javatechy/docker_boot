@@ -1,6 +1,7 @@
 package javatechy.dockboot.service;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,6 +23,14 @@ public class MyService {
 		print("ENV_NAME");
 		print("BOOTAPP_USR");
 		print("SERVER_PORT");
+	}
+
+	@PreDestroy
+	public void postDestruct() {
+		logger.info("I am destroying tata");
+		logger.info("tata");
+		logger.info("tata");
+		logger.info("tata");
 	}
 
 	private void print(String key) {
