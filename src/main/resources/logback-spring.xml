@@ -7,7 +7,7 @@
 			<Pattern>%d%thread] %-5level %logger - %msg%n</Pattern>
 		</layout>
 	</appender>
-
+	
 	<appender name="request"
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<file>/var/log/casa/docker_boot.log</file>
