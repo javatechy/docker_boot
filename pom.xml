@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>javatechy</groupId>
@@ -29,7 +31,7 @@
 		<developerConnection>scm:git:https://javatechy@github.com/javatechy/docker_boot.git</developerConnection>
 		<tag>HEAD</tag>
 	</scm>
-	
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -63,56 +65,56 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-<plugin>
-	<groupId>io.fabric8</groupId>
-	<artifactId>docker-maven-plugin</artifactId>
-	<configuration>
-		<verbose>true</verbose>
-		<registry>${docker.registry}</registry>
-		<dockerFileDir>src/main/docker</dockerFileDir>
-		<images>
-			<image>
-				<name>${docker.registry}/dockboot:${project.version}</name>
-				<build>
-					<dockerFileDir>${project.basedir}/src/main/docker</dockerFileDir>
-					<tags>
-						<tag>${project.version}</tag>
-						<tag>latest</tag>
-					</tags>
+			<plugin>
+				<groupId>io.fabric8</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<configuration>
+					<verbose>true</verbose>
+					<registry>${docker.registry}</registry>
+					<dockerFileDir>src/main/docker</dockerFileDir>
+					<images>
+						<image>
+							<name>${docker.registry}/dockboot:${project.version}</name>
+							<build>
+								<dockerFileDir>${project.basedir}/src/main/docker</dockerFileDir>
+								<tags>
+									<tag>${project.version}</tag>
+									<tag>latest</tag>
+								</tags>
 
-					<assembly>
-						<inline>
-							<dependencySets>
-								<dependencySet>
-									<includes>
-										<include>${project.groupId}:${project.artifactId}</include>
-									</includes>
-									<outputFileNameMapping>app.jar</outputFileNameMapping>
-								</dependencySet>
-							</dependencySets>
-						</inline>
-					</assembly>
-				</build>
-			</image>
-		</images>
-	</configuration>
-	<executions>
-		<execution>
-			<id>build-docker-image</id>
-			<phase>package</phase>
-			<goals>
-				<goal>build</goal>
-			</goals>
-		</execution>
-		<execution>
-			<id>push-docker-image</id>
-			<phase>deploy</phase>
-			<goals>
-				<goal>push</goal>
-			</goals>
-		</execution>
-	</executions>
-</plugin>
+								<assembly>
+									<inline>
+										<dependencySets>
+											<dependencySet>
+												<includes>
+													<include>${project.groupId}:${project.artifactId}</include>
+												</includes>
+												<outputFileNameMapping>app.jar</outputFileNameMapping>
+											</dependencySet>
+										</dependencySets>
+									</inline>
+								</assembly>
+							</build>
+						</image>
+					</images>
+				</configuration>
+				<executions>
+					<execution>
+						<id>build-docker-image</id>
+						<phase>package</phase>
+						<goals>
+							<goal>build</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>push-docker-image</id>
+						<phase>deploy</phase>
+						<goals>
+							<goal>push</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 
