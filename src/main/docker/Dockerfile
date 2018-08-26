@@ -1,4 +1,4 @@
-FROM javatechy/openjdk-8-slim
+FROM 425123548659.dkr.ecr.ap-south-1.amazonaws.com/openjdk-8-slim:newrelic
 
 MAINTAINER Deepak Kumar <deepak.kumar.iet@gmail.com>
 
@@ -23,4 +23,6 @@ RUN chmod 777 $LOG_PATH && touch $LOG_PATH
 
 USER $BOOTAPP_USR
 
+RUN cat ./newrelic/newrelic.yml | sed -e 's/app_name:.*/app_name: hotelier_ecs/' > ./newrelic/newrelic.yml
+ 
 ENTRYPOINT ["/wrapper.sh"]
