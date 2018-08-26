@@ -15,8 +15,6 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.juli.logging.Log;
-import org.apache.juli.logging.LogFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -26,11 +24,10 @@ public class RequestResponseFilter implements Filter {
 	private static final String NON_HTTP_RES_MSG = "Not available. Non-http response.";
 
 	private Logger logger = LoggerFactory.getLogger(RequestResponseFilter.class);
+
 	/**
 	 * The logger for this class.
 	 */
-	private static final Log log = LogFactory.getLog(RequestResponseFilter.class);
-
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
@@ -104,92 +101,92 @@ public class RequestResponseFilter implements Filter {
 				}
 				result.append(pvalues[i]);
 			}
-			str = this.join(str ,"Parameter : ", result.toString());
+			str = this.join(str, "Parameter : ", result.toString());
 		}
 
 		if (hRequest == null) {
-			str = this.join(str ,"PathInfo : ", NON_HTTP_REQ_MSG);
+			str = this.join(str, "PathInfo : ", NON_HTTP_REQ_MSG);
 		} else {
-			str = this.join(str ,"PathInfo : ", hRequest.getPathInfo());
+			str = this.join(str, "PathInfo : ", hRequest.getPathInfo());
 		}
 
-		str = this.join(str ,"Protocol : ", request.getProtocol());
+		str = this.join(str, "Protocol : ", request.getProtocol());
 
 		if (hRequest == null) {
-			str = this.join(str ,"QueryString : ", NON_HTTP_REQ_MSG);
+			str = this.join(str, "QueryString : ", NON_HTTP_REQ_MSG);
 		} else {
-			str = this.join(str ,"QueryString : ", hRequest.getQueryString());
+			str = this.join(str, "QueryString : ", hRequest.getQueryString());
 		}
 
-		str = this.join(str ,"RemoteAddr : ", request.getRemoteAddr());
-		str = this.join(str ,"RemoteHost : ", request.getRemoteHost());
+		str = this.join(str, "RemoteAddr : ", request.getRemoteAddr());
+		str = this.join(str, "RemoteHost : ", request.getRemoteHost());
 
 		if (hRequest == null) {
-			str = this.join(str ,"RemoteUser : ", NON_HTTP_REQ_MSG);
-			str = this.join(str ,"RequestedSessionId", NON_HTTP_REQ_MSG);
+			str = this.join(str, "RemoteUser : ", NON_HTTP_REQ_MSG);
+			str = this.join(str, "RequestedSessionId", NON_HTTP_REQ_MSG);
 		} else {
-			str = this.join(str ,"RemoteUser : ", hRequest.getRemoteUser());
-			str = this.join(str ,"RequestedSessionId", hRequest.getRequestedSessionId());
+			str = this.join(str, "RemoteUser : ", hRequest.getRemoteUser());
+			str = this.join(str, "RequestedSessionId", hRequest.getRequestedSessionId());
 		}
 
-		str = this.join(str ,"Scheme : ", request.getScheme());
-		str = this.join(str ,"ServerName : ", request.getServerName());
-		str = this.join(str ,"ServerPort : ", Integer.toString(request.getServerPort()));
+		str = this.join(str, "Scheme : ", request.getScheme());
+		str = this.join(str, "ServerName : ", request.getServerName());
+		str = this.join(str, "ServerPort : ", Integer.toString(request.getServerPort()));
 
 		if (hRequest == null) {
-			str = this.join(str ,"ServletPath : ", NON_HTTP_REQ_MSG);
+			str = this.join(str, "ServletPath : ", NON_HTTP_REQ_MSG);
 		} else {
-			str = this.join(str ,"ServletPath : ", hRequest.getServletPath());
+			str = this.join(str, "ServletPath : ", hRequest.getServletPath());
 		}
 
-		str = this.join(str ,"isSecure : ", Boolean.valueOf(request.isSecure()).toString());
+		str = this.join(str, "isSecure : ", Boolean.valueOf(request.isSecure()).toString());
 
 		// Perform the request
 		chain.doFilter(request, response);
 
 		// Log post-service information
 		if (hRequest == null) {
-			str = this.join(str ,"AuthType : ", NON_HTTP_REQ_MSG);
+			str = this.join(str, "AuthType : ", NON_HTTP_REQ_MSG);
 		} else {
-			str = this.join(str ,"AuthType : ", hRequest.getAuthType());
+			str = this.join(str, "AuthType : ", hRequest.getAuthType());
 		}
 
-		str = this.join(str ,"ContentType : ", response.getContentType());
+		str = this.join(str, "ContentType : ", response.getContentType());
 
 		if (hResponse == null) {
-			str = this.join(str ,"Header : ", NON_HTTP_RES_MSG);
+			str = this.join(str, "Header : ", NON_HTTP_RES_MSG);
 		} else {
 			Iterable<String> rhnames = hResponse.getHeaderNames();
 			for (String rhname : rhnames) {
 				Iterable<String> rhvalues = hResponse.getHeaders(rhname);
 				for (String rhvalue : rhvalues) {
-					str = this.join(str ,"Header : ", rhname + "=" + rhvalue);
+					str = this.join(str, "Header : ", rhname + "=" + rhvalue);
 				}
 			}
 		}
 
 		if (hRequest == null) {
-			str = this.join(str ,"RemoteUser : ", NON_HTTP_REQ_MSG);
+			str = this.join(str, "RemoteUser : ", NON_HTTP_REQ_MSG);
 		} else {
-			str = this.join(str ,"RemoteUser : ", hRequest.getRemoteUser());
+			str = this.join(str, "RemoteUser : ", hRequest.getRemoteUser());
 		}
 
 		if (hResponse == null) {
-			str = this.join(str ,"Status : ", NON_HTTP_RES_MSG);
+			str = this.join(str, "Status : ", NON_HTTP_RES_MSG);
 		} else {
-			str = this.join(str ,"Status : ", Integer.toString(hResponse.getStatus()));
+			str = this.join(str, "Status : ", Integer.toString(hResponse.getStatus()));
 		}
 
 		LocalDateTime endTime = LocalDateTime.now();
 
 		long millies = ChronoUnit.MILLIS.between(startTime, endTime);
-		str = this.join(str ,"END TIME:", endTime.toString());
-		str = this.join(str ,"total time : ", "" + millies);
+		str = this.join(str, "END TIME:", endTime.toString());
+		str = this.join(str, "total time : ", "" + millies);
 		logger.info(str);
 	}
 
 	private String join(String... strings) {
-		return String.join("", strings)+ " | ";
+		return String.join("", strings) + " | ";
 	}
 
 	@Override
