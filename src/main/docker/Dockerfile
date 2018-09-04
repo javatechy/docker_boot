@@ -23,6 +23,6 @@ RUN chmod 777 $LOG_PATH && touch $LOG_PATH
 
 USER $BOOTAPP_USR
 
-RUN cat ./newrelic/newrelic.yml | sed -e 's/app_name:.*/app_name: hotelier_ecs/' > ./newrelic/newrelic.yml
+# RUN cat ./newrelic/newrelic.yml | sed -e 's/app_name:.*/app_name: docker_boot/' > ./newrelic/newrelic.yml
  
 ENTRYPOINT ["/wrapper.sh"]
