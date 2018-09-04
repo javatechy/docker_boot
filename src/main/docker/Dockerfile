@@ -1,4 +1,4 @@
-FROM 425123548659.dkr.ecr.ap-south-1.amazonaws.com/openjdk-8-slim:newrelic
+FROM javatechy/openjdk-8-slim
 
 MAINTAINER Deepak Kumar <deepak.kumar.iet@gmail.com>
 

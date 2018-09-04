@@ -6,7 +6,7 @@
 
 	<groupId>javatechy</groupId>
 	<artifactId>dockboot</artifactId>
-	<version>0.0.8-SNAPSHOT</version>
+	<version>0.2-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>dockboot</name>
